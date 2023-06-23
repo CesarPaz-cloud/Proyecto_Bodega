@@ -1,8 +1,12 @@
 package com.cibertec.Proyecto_Bodega.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,4 +18,8 @@ public class Marca {
     private Integer codMar;
     @Column(name = "nom_mrc")
     private String nomMar;
+
+    @JsonManagedReference
+    @OneToMany (mappedBy = "objMrc", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Producto> lproducto = new ArrayList<>();
 }
