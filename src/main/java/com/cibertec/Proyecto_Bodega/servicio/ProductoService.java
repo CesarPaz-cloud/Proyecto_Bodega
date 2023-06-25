@@ -1,6 +1,6 @@
 package com.cibertec.Proyecto_Bodega.servicio;
 
-import com.cibertec.Proyecto_Bodega.model.Producto;
+import com.cibertec.Proyecto_Bodega.model.bd.Producto;
 import com.cibertec.Proyecto_Bodega.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+    <title>Marcas</title>
+</head>
+<body>
+<script th:src="@{/scripts/jsweb/marca/frmMantMarca.js}"
+        type="text/javascript"></script>
+<div class="card ">
+    <div class="card-header text-bg-dark mb-3">
+        Lista de Marcas
+    </div>
+    <div class="card-body">
+        <button id="btnagregar"
+                type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar</button>
+        <hr />
+        <div id="mensaje"></div>
+        <table id="tblmarca" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Actualizar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="marca :${listaMarcas}">
+                <td th:text="${marca.codMar}"></td>
+                <td th:text="${marca.nomMar}"></td>
+                <td>
+                    <button type="button" class="btn btn-info btnactualizar"
+                            th:data-codMar="${marca.codMar}"
+                            th:data-nomMar="${marca.nomMar}"><i class="fas fa-edit"></i></button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btneliminar"
+                            th:data-codMar="${marca.codMar}"
+                            th:data-nomMar="${marca.nomMar}"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Registrar / Modificar Marca -->
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Marca</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="txtnomMar" class="form-label">Descripción Marca</label>
+                    <input type="text" class="form-control" id="txtnomMar">
+                </div>
+                <input type="hidden" id="hddcodMar">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" id="btnguardar" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Eliminar Marca -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Eliminar Marca</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label id="textomodaleliminar"></label>
+                <input type="hidden" id="hddcodMareliminar">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" id="btneliminar" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

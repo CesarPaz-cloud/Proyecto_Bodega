@@ -1,4 +1,4 @@
-package com.cibertec.Proyecto_Bodega.model;
+package com.cibertec.Proyecto_Bodega.model.bd;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.naming.Name;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -17,6 +16,7 @@ import java.util.Set;
 @Table(name = "tb_usuario")
 public class Usuario {
     @Id
+    @Column(name="cod_usu")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codUs;
     @Column(name = "nom_usu")
@@ -27,8 +27,8 @@ public class Usuario {
     private String email;
     @Column(name = "usn_usu")
     private String usnUs;
-    @Column(name = "psn_usu")
-    private String psnUs;
+    @Column(name = "psw_usu")
+    private String pswUs;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "tb_usuario_rol", joinColumns = @JoinColumn(name = "idUs"),

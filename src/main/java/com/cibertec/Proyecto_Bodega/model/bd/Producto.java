@@ -1,4 +1,4 @@
-package com.cibertec.Proyecto_Bodega.model;
+package com.cibertec.Proyecto_Bodega.model.bd;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
