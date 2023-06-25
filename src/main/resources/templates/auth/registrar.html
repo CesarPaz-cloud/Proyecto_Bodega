@@ -16,32 +16,32 @@
         Registro de Usuarios
     </div>
     <div class="card-body">
-        <form th:action="@{/auth/guardarUsuario}" method="post">
+        <form th:action="@{/auth/guardarUsuario}" th:object="${usuario}" enctype="multipart/form-data" method="post">
             <div class="mb-3">
                 <label for="nomUs" class="form-label">Nombres</label>
                 <input maxlength="15" type="text" class="form-control"
-                       name="nomUs" id="nomUs">
+                       th:field="*{nomUs}" id="nomUs" placeholder="Nombres Completos">
             </div>
             <div class="mb-3">
                 <label for="apeUs" class="form-label">Apellidos</label>
                 <input maxlength="15" type="text" class="form-control"
-                       name="apeUs" id="apeUs">
+                       th:field="*{apeUs}" name="apeUs" id="apeUs" placeholder="Apellidos">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input maxlength="15" type="text" class="form-control"
-                       name="email" id="email">
+                <input type="text" class="form-control"
+                       th:field="*{email}" id="email" placeholder="Correo">
             </div>
             <div class="mb-3">
                 <label for="usnUs" class="form-label">Nombre de Usuario</label>
                 <input maxlength="15" type="text" class="form-control"
-                       name="usnUs" id="usnUs">
+                       th:field="*{usnUs}" id="usnUs" placeholder="Nombre de Usuario">
             </div>
 
             <div class="mb-3">
                 <label for="pswUs" class="form-label">Contraseña</label>
-                <input maxlength="15" type="password" class="form-control"
-                       name="pswUs" id="pswUs">
+                <input type="password" class="form-control"
+                       th:field="*{pswUs}" id="pswUs" placeholder="Contraseña">
             </div>
             <button type="submit" id="btnregistrar" class="btn btn-primary">
                 <i class="fas fa-save"></i>

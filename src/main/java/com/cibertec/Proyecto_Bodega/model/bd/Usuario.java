@@ -18,7 +18,7 @@ public class Usuario {
     @Id
     @Column(name="cod_usu")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codUs;
+    private long codUs;
     @Column(name = "nom_usu")
     private String nomUs;
     @Column(name = "ape_usu")
@@ -30,8 +30,5 @@ public class Usuario {
     @Column(name = "psw_usu")
     private String pswUs;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "tb_usuario_rol", joinColumns = @JoinColumn(name = "idUs"),
-                inverseJoinColumns = @JoinColumn(name = "idRol"))
-    private Set<Rol> roles;
+
 }

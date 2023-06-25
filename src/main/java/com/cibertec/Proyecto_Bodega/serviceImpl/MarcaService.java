@@ -1,4 +1,4 @@
-package com.cibertec.Proyecto_Bodega.servicio;
+package com.cibertec.Proyecto_Bodega.serviceImpl;
 
 import com.cibertec.Proyecto_Bodega.model.bd.Marca;
 import com.cibertec.Proyecto_Bodega.repository.MarcaRepository;
