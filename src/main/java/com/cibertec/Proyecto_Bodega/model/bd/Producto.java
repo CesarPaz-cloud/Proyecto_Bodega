@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -15,7 +17,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_prod")
-    private Integer codPro;
+    private long codPro;
     @Column(name = "nom_prod")
     private String nomPro;
     @Column(name = "cod_mrc")

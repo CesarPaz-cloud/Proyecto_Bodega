@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario obtenerUsuarioPorId(Integer Id) {
+    public Usuario obtenerUsuarioPorId(long Id) {
         Optional<Usuario> opcional = usRepo.findById(Id);
         Usuario usuario;
         if (opcional.isPresent()) {
@@ -50,7 +50,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void eliminarUsuario(Integer id) {
+    public void eliminarUsuario(long id) {
         usRepo.deleteById(id);
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Repository
-public interface ProductoRepository extends JpaRepository<Producto, Integer> {
+public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query("SELECT p FROM Producto p WHERE p.nomPro LIKE %?1%"
             + "OR p.objMrc.nomMar LIKE %?1%"
             + "OR p.objCat.nomCat LIKE %?1%"
