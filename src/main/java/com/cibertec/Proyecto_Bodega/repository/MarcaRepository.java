@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MarcaRepository extends JpaRepository<Marca,Integer> {
+public interface MarcaRepository extends JpaRepository<Marca,Long> {
     @Query("SELECT m FROM Marca m WHERE m.nomMar LIKE %?1%")
     public List<Marca> findAll(String keyword);
 }

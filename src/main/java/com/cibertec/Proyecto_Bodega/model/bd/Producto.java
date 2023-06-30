@@ -21,9 +21,9 @@ public class Producto {
     @Column(name = "nom_prod")
     private String nomPro;
     @Column(name = "cod_mrc")
-    private Integer codMar;
+    private long codMar;
     @Column(name = "cod_cat")
-    private Integer codCat;
+    private long codCat;
     @Column(name = "pre_prod")
     private double prePro;
     @Column(name = "stk_prod")
@@ -32,6 +32,8 @@ public class Producto {
     private String ubiPro;
     @Column(name = "fcv_prod")
     private String fcvPro;
+    @Column (name="cod_prv")
+    private long codPrv;
 
     @JsonBackReference
     @ManyToOne
@@ -42,4 +44,9 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "cod_cat",insertable = false,updatable = false)
     private Categoria objCat;
+
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "cod_prv",insertable = false,updatable = false)
+    private Proveedor objPrv;
 }

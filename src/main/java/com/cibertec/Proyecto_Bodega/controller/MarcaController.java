@@ -58,7 +58,7 @@ public class MarcaController {
         String mensaje = "Marca eliminada correctamente";
         Boolean respuesta = true;
         try {
-            mrcs.eliminarMarca(marcaRequest.getCodMar());
+            mrcs.eliminarMarca(Long.parseLong(marcaRequest.getCodMar().toString()));
         }catch (Exception e){
             mensaje = "Error al eliminar Marca";
             respuesta=false;

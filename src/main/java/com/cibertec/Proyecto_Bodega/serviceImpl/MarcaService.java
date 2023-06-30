@@ -23,7 +23,7 @@ public class MarcaService {
         mrc.save(m);
     }
 
-    public void eliminarMarca(Integer codMarc){
+    public void eliminarMarca(Long codMarc){
         mrc.deleteById(codMarc);
     }
 }
