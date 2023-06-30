@@ -21,7 +21,7 @@ public class MarcaController {
     @GetMapping("/lista")
     public String frmMantMarca(Model model, @Param("keyword") String keyword){
         model.addAttribute("listaMarcas", mrcs.listarMarcas(keyword));
-        return "marca/lista";
+        return "marca/frmMantMarca";
     }
 
     @GetMapping("/listarMarcas")

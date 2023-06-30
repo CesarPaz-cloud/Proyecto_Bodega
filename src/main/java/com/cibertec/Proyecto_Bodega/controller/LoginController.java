@@ -14,7 +14,7 @@ public class LoginController {
     private UsuarioServiceImpl usuarioServiceImpl;
     @GetMapping("/login")
     public String login(){
-        return "auth/login";
+        return "auth/frmlogin";
     }
 
     @GetMapping("/usuario")

@@ -14,22 +14,30 @@ import lombok.Setter;
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_prod")
     private Integer codPro;
+    @Column(name = "nom_prod")
     private String nomPro;
+    @Column(name = "cod_mrc")
     private Integer codMar;
+    @Column(name = "cod_cat")
     private Integer codCat;
+    @Column(name = "pre_prod")
     private double prePro;
+    @Column(name = "stk_prod")
     private String stkPro;
+    @Column(name = "ubi_prod")
     private String ubiPro;
+    @Column(name = "fcv_prod")
     private String fcvPro;
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "codMar",insertable = false, updatable = false)
+    @JoinColumn(name = "cod_mrc",insertable = false, updatable = false)
     private Marca objMrc;
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "codCat",insertable = false,updatable = false)
+    @JoinColumn(name = "cod_cat",insertable = false,updatable = false)
     private Categoria objCat;
 }

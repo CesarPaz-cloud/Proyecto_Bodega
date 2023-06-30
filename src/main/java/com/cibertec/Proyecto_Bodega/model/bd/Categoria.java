@@ -15,6 +15,7 @@ import java.util.List;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_cat")
     private Integer idCat;
     @Column(name = "nom_cat")
     private String nomCat;

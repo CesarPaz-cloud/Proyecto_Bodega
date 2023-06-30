@@ -11,6 +11,7 @@ import lombok.Setter;
 public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_prv")
     private Integer idProv;
     @Column(name = "nom_prv")
     private String nomProv;
