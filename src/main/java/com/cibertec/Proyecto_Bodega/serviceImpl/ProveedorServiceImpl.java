@@ -4,10 +4,12 @@ import com.cibertec.Proyecto_Bodega.model.bd.Proveedor;
 import com.cibertec.Proyecto_Bodega.repository.ProveedorRepository;
 import com.cibertec.Proyecto_Bodega.servicio.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProveedorServiceImpl implements ProveedorService {
 
     @Autowired

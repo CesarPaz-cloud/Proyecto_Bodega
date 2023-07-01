@@ -4,10 +4,12 @@ import com.cibertec.Proyecto_Bodega.model.bd.Categoria;
 import com.cibertec.Proyecto_Bodega.repository.CategoriaRepository;
 import com.cibertec.Proyecto_Bodega.servicio.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CategoriaServiceImpl implements CategoriaService {
 
     @Autowired
