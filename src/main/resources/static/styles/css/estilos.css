@@ -19,8 +19,9 @@ header{
 
 body{
 	background-image: url("/img/fondonanito.jpg");
-	background-position: center;
+	/*background-position: center;*/
 	background-size: cover;
+	max-height: 100%;
 }
 
 .fbg{
