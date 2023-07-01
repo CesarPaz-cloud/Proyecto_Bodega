@@ -19,6 +19,13 @@ public class Proveedor {
     private long idProv;
     @Column(name = "nom_prv")
     private String nomProv;
+    @Column(name = "ctc_prv")
+    private String ctcProv;
+    @Column(name = "tlf_prv")
+    private String tlfProv;
+    @Column(name = "email_prv")
+    private String emlProv;
+
 
     @JsonManagedReference
     @OneToMany (mappedBy = "objPrv", cascade = CascadeType.ALL, orphanRemoval = true)

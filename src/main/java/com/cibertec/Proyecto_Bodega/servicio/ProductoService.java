@@ -5,11 +5,11 @@ import com.cibertec.Proyecto_Bodega.model.bd.Producto;
 import java.util.List;
 
 public interface ProductoService {
-    List<Producto> listarProductos();
+    public List<Producto> listarProductos(String keyword);
 
-    Producto obtenerProductoPorId(long idProd);
+    public void registrarProducto(Producto p);
 
-   void  guardarProducto(Producto producto);
+    public void eliminarProducto(Long codPro);
 
-    void eliminarProducto(long idProd);
+    public Producto buscarProducto(Long codPro);
 }

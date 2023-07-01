@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/headfragment::head">
+    <meta charset="UTF-8">
+    <title>DatosMarca</title>
+</head>
+<body>
+<div class="container">
+<header></header>
+<main>
+
+    <section style="width: 65%;float: left;">
+        <h1>Mantenimiento de Marcas</h1>
+        <form action="/marca/guardarNarca" method="post"
+              th:object="${marca}">
+
+
+            <div class="form-group">
+                <input type="hidden" th:field="*{codMar}" class="form-control">
+                <label>Marca</label>
+                <input type="text" th:field="*{nomMar}" class="form-control" id="txtCategoria" placeholder="Nombre de la marca">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" onclick="validar()">registrar</button>
+            <a href="/marca/lista" class="btn btn-primary">Listado</a>
+            <a href="/marca/registrarMarca" class="btn btn-primary">limpiar</a>
+
+        </form>
+        <br>
+        <div th:class="${clasemensaje}" role="alert" th:text="${mensaje}"></div>
+    </section>
+</main>
+
+
+</div>
+</body>
+<script>
+ function validar()
+ {
+   	var nomC = document.getElementById('txtCategoria').value;
+    var nomReg = /^[a-zA-Z1-9\s\ñ]{3,}$/;;
+
+    if(nomReg.test(nomC)==false){
+    	alert("Nombre de categoria invalida");
+    	event.preventDefault();
+    }else
+    	return;
+
+ }
+</script>
+</body>
+</html>

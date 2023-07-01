@@ -14,32 +14,30 @@ public class ProductoServiceImpl implements ProductoService {
     @Autowired
     private ProductoRepository prod;
 
-
-    @Override
-    public List<Producto> listarProductos() {
+    public List<Producto> listarProductos(String keyword){
+        if(keyword!=null){
+            return prod.findAll(keyword);
+        }
         return prod.findAll();
     }
 
-    @Override
-    public Producto obtenerProductoPorId(long idProd) {
-        Optional<Producto> opcional = prod.findById(idProd);
-        Producto producto;
-        if (opcional.isPresent()){
-            producto = opcional.get();
-        }else {
-            throw new RuntimeException("Producto no encontrado por el Id"+ idProd);
+    public void registrarProducto(Producto p){
+        prod.save(p);
+    }
+
+    public void eliminarProducto(Long codPro){
+        prod.deleteById(codPro);
+    }
+
+    public Producto buscarProducto(Long codPro){
+        Optional<Producto> elemento = prod.findById(codPro);
+        Producto p;
+        if(!elemento.isEmpty()){
+            p = elemento.get();
+        }else{
+            throw new RuntimeException("Error al Obtener el Producto: "+codPro);
         }
-        return producto;
-    }
-
-    @Override
-    public void guardarProducto(Producto producto) {
-         prod.save(producto);
-    }
-
-    @Override
-    public void eliminarProducto(long idProd) {
-        prod.deleteById(idProd);
+        return p;
     }
 }
 

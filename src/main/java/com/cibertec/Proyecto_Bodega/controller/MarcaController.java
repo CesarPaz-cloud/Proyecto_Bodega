@@ -1,8 +1,6 @@
 package com.cibertec.Proyecto_Bodega.controller;
 
 import com.cibertec.Proyecto_Bodega.model.bd.Marca;
-import com.cibertec.Proyecto_Bodega.model.request.MarcaRequest;
-import com.cibertec.Proyecto_Bodega.model.response.ResultadoResponse;
 import com.cibertec.Proyecto_Bodega.serviceImpl.MarcaServiceImpl;
 import com.cibertec.Proyecto_Bodega.servicio.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,58 +15,57 @@ import java.util.List;
 @RequestMapping("/marca")
 public class MarcaController {
     @Autowired
-    public MarcaServiceImpl mrcS;
+    private MarcaServiceImpl mrcS;
 
 
     @GetMapping("/lista")
-    public String frmMantMarca(Model model, @Param("keyword") String keyword){
+    public String listarMarcas(Model model, @Param("keyword") String keyword){
         model.addAttribute("listaMarcas", mrcS.listarMarcas(keyword));
-        return "marca/frmMantMarca";
+        return "Marca/ListaMarca";
     }
 
-    @GetMapping("/listarMarcas")
-    @ResponseBody
-    public List<Marca> listarMarcas(@Param("keyword") String keyword){
-        return mrcS.listarMarcas(keyword);
+    @GetMapping("/registrarMarca")
+    public String RegistrarMarca(Model model){
+        model.addAttribute("marca",new Marca());
+        return "Marca/RegistroMarca";
     }
 
-    @PostMapping("/registrarMarca")
-    @ResponseBody
-    public ResultadoResponse registrarMarca(@RequestBody MarcaRequest marcaRequest){
-        String mensaje = "Marca registrada correctamente";
-        Boolean respuesta = true;
-
+    @PostMapping("/guardarNarca")
+    public String guardarMarca(@ModelAttribute("marca") Marca marca, Model model){
         try {
-            Marca objMarca = new Marca();
-            if(marcaRequest.getCodMar()>0){
-                objMarca.setCodMar(marcaRequest.getCodMar());
-            }
-            objMarca.setNomMar(marcaRequest.getNomMar());
-            mrcS.registrarMarca(objMarca);
-        }catch (Exception e){
-            mensaje = "Marca no registrada";
-            respuesta=false;
+            mrcS.registrarMarca(marca);
+            model.addAttribute("clasemensaje","alert alert-success");
+            model.addAttribute("mensaje","Marca registrada con exito");
+        } catch (Exception e) {
+            model.addAttribute("clasemensaje","alert alert-danger");
+            model.addAttribute("mensaje","Error al registrar marca");
         }
-        return ResultadoResponse.builder()
-                .mensaje(mensaje)
-                .respuesta(respuesta).build();
+        model.addAttribute("listaMarcas", mrcS.listarMarcas(null));
+        return "Marca/ListaMarca";
     }
 
-    @DeleteMapping("/eliminarMarca")
-    @ResponseBody
-    public ResultadoResponse eliminarMarca(@RequestBody MarcaRequest marcaRequest){
-        String mensaje = "Marca eliminada correctamente";
-        Boolean respuesta = true;
-        try {
-            mrcS.eliminarMarca(Long.parseLong(marcaRequest.getCodMar().toString()));
-        }catch (Exception e){
-            mensaje = "Error al eliminar Marca";
-            respuesta=false;
-        }
-        return ResultadoResponse.builder()
-                .mensaje(mensaje)
-                .respuesta(respuesta).build();
+    @PostMapping("/editarMarca")
+    public String editarMarca(@ModelAttribute("marca") Marca marca, Model model){
+        model.addAttribute("marca", mrcS.buscarMarca(marca.getCodMar()));
+        return "Marca/RegistroMarca";
     }
+
+
+    @PostMapping("/eliminarMarca")
+    public String eliminarMarca(@ModelAttribute Marca marca,Model model ){
+        try {
+            mrcS.eliminarMarca(marca.getCodMar());
+            model.addAttribute("clasemensaje","alert alert-success");
+            model.addAttribute("mensaje","Marca eliminada con exito");
+        } catch (Exception e) {
+            model.addAttribute("clasemensaje","alert alert-danger");
+            model.addAttribute("mensaje","Error al eliminar marca");
+        }
+
+        model.addAttribute("listaMarcas", mrcS.listarMarcas(null));
+        return "Marca/ListaMarca";
+    }
+
 
 
 }

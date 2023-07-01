@@ -26,6 +26,7 @@ public class MarcaServiceImpl implements MarcaService {
     }
 
     public void eliminarMarca(Long codMarc){
+
         mrc.deleteById(codMarc);
     }
     public Marca buscarMarca(Long codMarc){

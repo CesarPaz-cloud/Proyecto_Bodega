@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/headfragment::head">
+    <meta charset="UTF-8">
+    <title>Marcas</title>
+</head>
+<body>
+<div class="container">
+    <h1>Listado de Marcas</h1>
+    <main>
+
+        <section style="width: 65%;float: left;">
+            <form class="form-inline my-2 my-lg-0" th:action="@{/marca/lista}">
+                <input class="form-control mr-sm-2" type="search" name="keyword" id="keyword" placeholder="Buscar" th:value="${keyword}" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                <input type="button" class="btn btn-secondary mx-2 my-2 my-sm-0" value="Limpiar" onclick="limpiar()">
+            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre de Marca</th>
+                </thead>
+                <tbody>
+
+                <tr th:each="m:${listaMarcas}">
+
+                    <td th:text="${m.codMar}"></td>
+                    <td th:text="${m.nomMar}"></td>
+
+                    <td>
+                        <form action="/marca/editarMarca" method="post">
+                            <input type="hidden" th:value="${m.codMar}" name="codMar">
+                            <button type="submit" class="btn btn-link"><img alt="" src="../img/edit1.png"></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/marca/eliminarMarca" method="post">
+                            <input type="hidden" th:value="${m.codMar}" name="codMar">
+                            <button type="submit" class="btn btn-link" onclick="confirmar()"><img alt="" src="../img/delete.png"></button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:class="${clasemensaje}" role="alert" th:text="${mensaje}"></div>
+            <div> <a class="btn btn-primary" href="/marca/registrarMarca">Nueva Marca</a> </div>
+        </section>
+
+    </main>
+
+</div>
+</body>
+<script>
+    function confirmar() {
+        if (confirm("¿Desea Eliminar esta Marca?")) {
+            return;
+        } else { event.preventDefault(); }
+    }
+    function limpiar(){
+    	window.location='/marca/lista';
+    }
+</script>
+</html>
