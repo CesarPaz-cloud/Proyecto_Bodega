@@ -11,4 +11,6 @@ import java.util.List;
 public interface MarcaRepository extends JpaRepository<Marca,Long> {
     @Query("SELECT m FROM Marca m WHERE m.nomMar LIKE %?1%")
     public List<Marca> findAll(String keyword);
+
+
 }
