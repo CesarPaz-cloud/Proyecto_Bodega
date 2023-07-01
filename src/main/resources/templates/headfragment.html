@@ -10,8 +10,26 @@
           type="text/javascript"></script>
   <script th:src="@{/scripts/jquery/jquery.js}"
           type="text/javascript"></script>
+  <script th:src="@{/scripts/jquery/popper.min.js}"
+          type="text/javascript"></script>
 </head>
 <body>
-
+<header th:fragment="header" class="fbg py-5">
+  <div class="container col center" >
+    <!-- Inicio de navbar-->
+    <nav id="menu" class="navbar navbar-expand-xl navbar-light"> <a class="navbar-brand" href="/home/inicio"><img src="../img/Nanitologo.png" width="50" height="50" alt="Logo nanito"/></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <ul class="navbar-nav mx-auto col-10 justify-content-center">
+          <li class="nav-item active mx-3"> <a class="nav-link" href="/categoria/lista">Categorias<span class="sr-only">(current)</span></a> </li>
+          <li class="nav-item mx-3"> <a class="nav-link" href="/marca/lista">Marcas</a> </li>
+          <li class="nav-item mx-3"> <a class="nav-link" href="/producto/lista">Productos</a> </li>
+          <li class="nav-item mx-3"> <a class="nav-link" href="/proveedor/lista">Proveedores</a> </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Fin de navbar-->
+  </div>
+</header>
 </body>
 </html>
