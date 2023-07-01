@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class LoginController {
     @Autowired
-    private UsuarioServiceImpl usuarioServiceImpl;
+    public UsuarioServiceImpl usuarioServiceImpl;
     @GetMapping("/login")
     public String login(){
         return "auth/frmlogin";

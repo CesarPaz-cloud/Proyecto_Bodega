@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductoController {
 
     @Autowired
-    private ProductoServiceImpl prodS;
+    public ProductoServiceImpl prodS;
 
     @GetMapping("/lista")
     public String listarProductos(Model model, @Param("keyword") String keyword){

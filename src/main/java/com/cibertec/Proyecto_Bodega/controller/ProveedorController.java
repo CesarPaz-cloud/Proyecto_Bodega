@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProveedorController {
 
     @Autowired
-    private ProveedorServiceImpl prvS;
+    public ProveedorServiceImpl prvS;
 
     @GetMapping("/lista")
     public String listarProveedores(Model model, @Param("keyword") String keyword){

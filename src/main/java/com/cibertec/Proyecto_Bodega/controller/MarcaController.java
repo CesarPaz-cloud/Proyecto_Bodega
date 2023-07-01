@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/marca")
 public class MarcaController {
     @Autowired
-    private MarcaServiceImpl mrcS;
+    public MarcaServiceImpl mrcS;
 
 
     @GetMapping("/lista")
