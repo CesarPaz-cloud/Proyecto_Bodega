@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="/headfragment::head">
-    <meta charset="UTF-8">
-    <title>DatosMarca</title>
 </head>
 <body>
 <div class="container">
@@ -19,7 +17,7 @@
             <div class="form-group">
                 <input type="hidden" th:field="*{codMar}" class="form-control">
                 <label>Marca</label>
-                <input type="text" th:field="*{nomMar}" class="form-control" id="txtCategoria" placeholder="Nombre de la marca">
+                <input type="text" th:field="*{nomMar}" class="form-control" id="txtMarca" placeholder="Nombre de la marca">
             </div>
 
 
@@ -39,11 +37,11 @@
 <script>
  function validar()
  {
-   	var nomC = document.getElementById('txtCategoria').value;
+   	var nomC = document.getElementById('txtMarca').value;
     var nomReg = /^[a-zA-Z1-9\s\ñ]{3,}$/;;
 
     if(nomReg.test(nomC)==false){
-    	alert("Nombre de categoria invalida");
+    	alert("Nombre de marca invalida");
     	event.preventDefault();
     }else
     	return;

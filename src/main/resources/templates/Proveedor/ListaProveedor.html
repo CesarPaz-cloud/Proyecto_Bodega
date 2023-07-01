@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Proveedores</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/headfragment::head">
 </head>
 <body>
 
+<div class="container">
+    <header th:replace="headfragment::header"></header>
+    <h1>Listado de Proveedores</h1>
+    <main>
+
+        <section style="width: 65%;float: left;">
+            <form class="form-inline my-2 my-lg-0" th:action="@{/proveedor/lista}">
+                <input class="form-control mr-sm-2" type="search" name="keyword" id="keyword" placeholder="Buscar" th:value="${keyword}" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                <input type="button" class="btn btn-secondary mx-2 my-2 my-sm-0" value="Limpiar" onclick="limpiar()">
+            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre del Proveedor</th>
+                    <th scope="col">Contacto</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">email</th>
+                </thead>
+                <tbody>
+
+                <tr th:each="pr:${listaProveedores}">
+
+                    <td th:text="${pr.codProv}"></td>
+                    <td th:text="${pr.nomProv}"></td>
+                    <td th:text="${pr.ctcProv}"></td>
+                    <td th:text="${pr.tlfProv}"></td>
+                    <td th:text="${pr.emlProv}"></td>
+
+                    <td>
+                        <form action="/proveedor/editarProveedor" method="post">
+                            <input type="hidden" th:value="${pr.codProv}" name="codProv">
+                            <button type="submit" class="btn btn-link"><img alt="" src="../img/edit1.png"></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/proveedor/eliminarProveedor" method="post">
+                            <input type="hidden" th:value="${pr.codProv}" name="codProv">
+                            <button type="submit" class="btn btn-link" onclick="confirmar()"><img alt="" src="../img/delete.png"></button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:class="${clasemensaje}" role="alert" th:text="${mensaje}"></div>
+            <div> <a class="btn btn-primary" href="/proveedor/registrarProveedor">Nuevo Proveedor</a> </div>
+        </section>
+
+    </main>
+
+</div>
 </body>
+<script>
+    function confirmar() {
+        if (confirm("¿Desea Eliminar este Proveedor?")) {
+            return;
+        } else { event.preventDefault(); }
+    }
+    function limpiar(){
+    	window.location='/proveedor/lista';
+    }
+</script>
 </html>

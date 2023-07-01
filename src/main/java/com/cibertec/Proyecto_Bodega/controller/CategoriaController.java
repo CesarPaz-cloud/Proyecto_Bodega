@@ -46,7 +46,7 @@ public class CategoriaController {
 
     @PostMapping("/editarCategoria")
     public String editarCategoria(@ModelAttribute("categoria") Categoria categoria, Model model){
-        model.addAttribute("categoria", catS.buscarCategoria(categoria.getIdCat()));
+        model.addAttribute("categoria", catS.buscarCategoria(categoria.getCodCat()));
         return "Categoria/RegistroCategoria";
     }
 
@@ -54,7 +54,7 @@ public class CategoriaController {
     @PostMapping("/eliminarCategoria")
     public String eliminarCategoria(@ModelAttribute Categoria categoria,Model model ){
         try {
-            catS.eliminarCategoria(categoria.getIdCat());
+            catS.eliminarCategoria(categoria.getCodCat());
             model.addAttribute("clasemensaje","alert alert-success");
             model.addAttribute("mensaje","Categoria eliminada con exito");
         } catch (Exception e) {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/headfragment::head">
+    <meta charset="UTF-8">
+    <title>DatosCategoria</title>
+</head>
+<body>
+<div class="container">
+    <header th:replace="headfragment::header"></header>
+    <header></header>
+    <main>
+
+        <section style="width: 65%;float: left;">
+            <h1>Mantenimiento de Categorias</h1>
+            <form action="/categoria/guardarCategoria" method="post"
+                  th:object="${categoria}">
+
+
+                <div class="form-group">
+                    <input type="hidden" th:field="*{codCat}" class="form-control">
+                    <label>Categoria</label>
+                    <input type="text" th:field="*{nomCat}" class="form-control" id="txtCategoria" placeholder="Nombre de la categoria">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary" onclick="validar()">registrar</button>
+                <a href="/categoria/lista" class="btn btn-primary">Listado</a>
+                <a href="/categoria/registrarCategoria" class="btn btn-primary">limpiar</a>
+
+            </form>
+            <br>
+            <div th:class="${clasemensaje}" role="alert" th:text="${mensaje}"></div>
+        </section>
+    </main>
+
+
+</div>
+</body>
+<script>
+ function validar()
+ {
+   	var nomC = document.getElementById('txtCategoria').value;
+    var nomReg = /^[a-zA-Z1-9\s\ñ]{3,}$/;;
+
+    if(nomReg.test(nomC)==false){
+    	alert("Nombre de categoria invalida");
+    	event.preventDefault();
+    }else
+    	return;
+
+ }
+</script>
+</body>
+</html>

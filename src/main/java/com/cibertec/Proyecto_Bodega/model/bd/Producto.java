@@ -33,7 +33,7 @@ public class Producto {
     @Column(name = "fcv_prod")
     private String fcvPro;
     @Column (name="cod_prv")
-    private long codPrv;
+    private long codProv;
 
     @JsonBackReference
     @ManyToOne

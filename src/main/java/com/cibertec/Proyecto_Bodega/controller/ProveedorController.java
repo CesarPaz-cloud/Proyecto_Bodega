@@ -45,8 +45,8 @@ public class ProveedorController {
     }
 
     @PostMapping("/editarProveedor")
-    public String editarProveedor(@ModelAttribute("marca") Proveedor proveedor, Model model){
-        model.addAttribute("marca", prvS.buscarProveedor(proveedor.getIdProv()));
+    public String editarProveedor(@ModelAttribute("proveedor") Proveedor proveedor, Model model){
+        model.addAttribute("proveedor", prvS.buscarProveedor(proveedor.getCodProv()));
         return "Proveedor/RegistroProveedor";
     }
 
@@ -54,7 +54,7 @@ public class ProveedorController {
     @PostMapping("/eliminarProveedor")
     public String eliminarProveedor(@ModelAttribute Proveedor proveedor,Model model ){
         try {
-            prvS.eliminarProveedor(proveedor.getIdProv());
+            prvS.eliminarProveedor(proveedor.getCodProv());
             model.addAttribute("clasemensaje","alert alert-success");
             model.addAttribute("mensaje","Proveedor eliminado con exito");
         } catch (Exception e) {
