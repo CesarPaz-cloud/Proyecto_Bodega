@@ -8,11 +8,11 @@ public interface UsuarioService {
 
     String findUsuariobyNombre(String nomUs, String pswUs);
 
-    Usuario obtenerUsuarioPorId(long Id);
+    Usuario obtenerUsuarioPorId(Integer Id);
 
     Usuario guardar(Usuario usuario);
 
     List<Usuario> listarUsuario();
 
-    void eliminarUsuario(long id);
+    void eliminarUsuario(Integer id);
 }

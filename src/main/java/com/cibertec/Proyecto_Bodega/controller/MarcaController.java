@@ -30,7 +30,7 @@ public class MarcaController {
         return "Marca/RegistroMarca";
     }
 
-    @PostMapping("/guardarNarca")
+    @PostMapping("/guardarMarca")
     public String guardarMarca(@ModelAttribute("marca") Marca marca, Model model){
         try {
             mrcS.registrarMarca(marca);

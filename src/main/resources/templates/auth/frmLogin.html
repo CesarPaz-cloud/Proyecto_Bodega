@@ -16,7 +16,7 @@
     Autenticación
   </div>
   <div class="card-body">
-    <form th:action="@{/auth/login}" method="post">
+    <form method="post">
       <div class="mb-3">
         <label for="usnUs" class="form-label">Usuario</label>
         <input maxlength="15" type="text" class="form-control"
@@ -25,9 +25,9 @@
       <div class="mb-3">
         <label for="pswUs" class="form-label">Password</label>
         <input maxlength="15" type="password" class="form-control"
-               name="psnUs" id="pswUs">
+               name="pswUs" id="pswUs">
       </div>
-      <button type="submit" id="btningresar" class="btn btn-primary">
+      <button id="btningresar" class="btn btn-primary" href="/Home">
         <i class="fas fa-save"></i>
         INGRESAR</button>
       <a class="btn btn-primary" th:href="@{/auth/registrar}"
@@ -35,5 +35,6 @@
     </form>
   </div>
 </div>
+
 </body>
 </html>

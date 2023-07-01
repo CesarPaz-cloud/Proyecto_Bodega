@@ -1,0 +1,33 @@
+#menu {
+  /*background-color: yellow;
+  width: 200px;*/
+}
+
+#menu a {
+  /* Estilos para los enlaces dentro del menú */
+}
+
+#menu img {
+  /* Estilos para la imagen del logotipo */
+}
+/*
+header{
+	background-image: url("/img/fondoazul.jpg");
+	background-position: center;
+	background-size: cover;
+}*/
+
+body{
+	background-image: url("/img/fondonanito.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.fbg{
+	width: 100%;
+}
+
+.table{
+	background-color: rgba(255, 255, 255, 0.6);
+	width: 150%;
+}

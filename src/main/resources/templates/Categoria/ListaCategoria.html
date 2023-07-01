@@ -9,13 +9,27 @@
 <div class="container">
     <header th:replace="headfragment::header"></header>
     <h1>Listado de Categorias</h1>
+    <br>
     <main>
 
         <section style="width: 65%;float: left;">
             <form class="form-inline my-2 my-lg-0" th:action="@{/categoria/lista}">
+
+                <div class="row">
+
+                    <div class="col-md-10">
                 <input class="form-control mr-sm-2" type="search" name="keyword" id="keyword" placeholder="Buscar" th:value="${keyword}" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                <input type="button" class="btn btn-secondary mx-2 my-2 my-sm-0" value="Limpiar" onclick="limpiar()">
+                    </div>
+                        <div class="col-md-1">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </div>
+
+                            <div class="col-md-1">
+                            <input type="button" class="btn btn-secondary mx-2 my-2 my-sm-0" value="Limpiar" onclick="limpiar()">
+                            </div>
+                    </div>
+                <br>
+                <div th:class="${clasemensaje}" role="alert" th:text="${mensaje}"></div>
             </form>
             <table class="table">
                 <thead>
@@ -45,7 +59,6 @@
                 </tr>
                 </tbody>
             </table>
-            <div th:class="${clasemensaje}" role="alert" th:text="${mensaje}"></div>
             <div> <a class="btn btn-primary" href="/categoria/registrarCategoria">Nueva Categoria</a> </div>
         </section>
 
